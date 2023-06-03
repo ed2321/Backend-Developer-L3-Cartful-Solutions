@@ -15,13 +15,12 @@ cd src && npm i
 ### Usage
 Before launching the application, make sure to add the respective `.env` file inside the `/src` path
 
-run aplication 
 
 run the app with docker (recommended)
 ```
 docker-compose up --build
 ```
-
+run aplication 
 ```
 npm run start
 ```
