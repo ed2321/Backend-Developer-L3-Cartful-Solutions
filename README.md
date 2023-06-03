@@ -169,7 +169,7 @@ En resumen, esta estrategia de despliegue en AWS aprovecha los servicios serverl
 - `npm run start:dev` : Run the application and automatically restarts when files changes.
 - `npm run lint`: Inspect code styles errors in the javascript files (also detect prettier format errors)
 - `npm run format`: detect prettier formatting errors and fixes them
-- `npm test`: Run unit tests
+- `npm run test`: Run unit tests
 - `npm run test:watch`: Run unit tests and automatically restarts when `*.test.js` files changes.
 - `npm run test:coverage`: Run test coverage.
 - `npm run test:ci`: Run test continuos integration.
