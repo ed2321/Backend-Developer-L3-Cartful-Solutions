@@ -129,6 +129,21 @@ curl --request GET \
   --url http://0.0.0.0:4000/api/products/recommend \
   --header 'x-access-token: test_token'
 ```
+marketing team inquiries
+
+GET api/products/most-liked
+```
+curl --request GET \
+  --url http://0.0.0.0:4000/api/products/most-liked \
+  --header 'x-access-token: test_token'
+```
+
+GET api/products/most-disliked
+```
+curl --request GET \
+  --url http://0.0.0.0:4000/api/products/most-disliked \
+  --header 'x-access-token: test_token'
+```
 
 ### npm scripts
 
