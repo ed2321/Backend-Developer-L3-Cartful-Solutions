@@ -13,7 +13,7 @@ Open a terminal in the root of the project:
 cd src && npm i
 ```
 ### Usage
-Before to start the application, make sure to add the respective `.env` file inside in the root of the project
+Before launching the application, make sure to add the respective `.env` file inside the `/src` path
 
 run aplication 
 
