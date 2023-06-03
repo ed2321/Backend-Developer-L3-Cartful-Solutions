@@ -149,6 +149,18 @@ Objetivo: Definir una estrategia de despliegue de la aplicación en AWS. Instruc
 1. Definir una estrategia para desplegar estaa plicación en AWS. 
 Para desplegar esta aplicación en AWS, se utilizará una arquitectura serverless, lo que significa que no será necesario administrar servidores ni infraestructura subyacente. Esto brinda mayor flexibilidad y escalabilidad. 
 
+2. ¿Qué servicios de AWS utilizaría y porqué?
+* DynamoDB se utilizará como base de datos para almacenar los datos de los productos, como nombres, precios, categorías, etc. Lambda interactuará con DynamoDB para leer y escribir los datos necesarios.
+
+* Lambda se utilizará para ejecutar el código de la lógica de negocio de la aplicación. Recibirá las solicitudes de los usuarios a través de API Gateway, procesará los datos necesarios y realizará las operaciones correspondientes en DynamoDB.
+
+* API Gateway actuará como puerta de enlace de la API RESTful. Recibirá las solicitudes de los usuarios y las dirigirá a Lambda para su procesamiento. También se encargará de la autenticación y autorización de los usuarios, asegurando la seguridad de la API.
+
+* S3 se utilizará para almacenar las imágenes de los productos. Cuando un producto se registre o actualice, Lambda guardará la imagen correspondiente en S3 y asociará su ubicación con el producto en DynamoDB.
+
+* CloudFront se integrará con S3 para proporcionar una entrega de contenido rápida y eficiente. Cuando un usuario solicite una imagen de producto, CloudFront se encargará de entregarla desde la ubicación más cercana, acelerando la carga de la imagen y mejorando la experiencia del usuario.
+
+En resumen, esta estrategia de despliegue en AWS aprovecha los servicios serverless para lograr una aplicación escalable y de alto rendimiento.
 
 ### npm scripts
 
