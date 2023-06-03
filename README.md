@@ -143,6 +143,12 @@ curl --request GET \
   --url http://0.0.0.0:4000/api/products/most-disliked \
   --header 'x-access-token: test_token'
 ```
+Plus - Problema #4: Infraestructura
+
+Objetivo: Definir una estrategia de despliegue de la aplicación en AWS. Instrucciones
+1. Definir una estrategia para desplegar estaa plicación en AWS. 
+Para desplegar esta aplicación en AWS, se utilizará una arquitectura serverless, lo que significa que no será necesario administrar servidores ni infraestructura subyacente. Esto brinda mayor flexibilidad y escalabilidad. 
+
 
 ### npm scripts
 
