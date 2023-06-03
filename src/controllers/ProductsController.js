@@ -245,8 +245,6 @@ const recommendProduct = async (req, res) => {
         const userDislikedProducts =
             await productsRepository.getDislikedProducts(id)
 
-        console.log('userLikedProducts', userLikedProducts)
-        console.log('userDislikedProducts', userDislikedProducts)
 
         if (
             userLikedProducts.length === 0 &&
@@ -254,7 +252,6 @@ const recommendProduct = async (req, res) => {
         ) {
             // Si el usuario no ha dado "like" o "dislike" a ningún producto, generar una recomendación aleatoria
             const randomProduct = await productsRepository.getRandomProduct()
-            console.log(randomProduct)
             return res.status(200).json(randomProduct)
         }
 
@@ -263,13 +260,11 @@ const recommendProduct = async (req, res) => {
             await productsRepository.filterProductsByPreferences(
                 userDislikedProducts
             )
-        console.log('filteredProducts', filteredProducts)
         const sortedProducts =
             await productsRepository.sortProductsBySimilarity(
                 filteredProducts,
                 userLikedProducts
             )
-        console.log('sortedProducts', sortedProducts)
 
         // Seleccionar el producto con la mayor similitud como recomendación principal
         const recommendation = sortedProducts[0]
@@ -284,7 +279,6 @@ const recommendProduct = async (req, res) => {
 
 const getMostLikedProducts = async (req, res) => {
     try {
-        console.log('entreee')
         const mostLikedProducts =
             await productsRepository.getMostLikedProducts()
         return res.status(200).json(mostLikedProducts)
@@ -297,7 +291,6 @@ const getMostLikedProducts = async (req, res) => {
 
 const getMostDislikedProducts = async (req, res) => {
     try {
-        console.log('entreee')
         const mostDislikedProducts =
             await productsRepository.getMostDislikedProducts()
         return res.status(200).json(mostDislikedProducts)
