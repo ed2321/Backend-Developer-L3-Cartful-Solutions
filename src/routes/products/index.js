@@ -9,8 +9,15 @@ const {
     likeProduct,
     dislikeProduct,
     recommendProduct,
+    getMostLikedProducts,
+    getMostDislikedProducts,
 } = require('../../controllers/ProductsController')
 
+//marketing
+products.get('/most-liked', authenticateToken, getMostLikedProducts)
+products.get('/most-disliked', authenticateToken, getMostDislikedProducts)
+
+//products
 products.get('/recommend', authenticateToken, recommendProduct)
 products.post('/register', authenticateToken, registerProduct)
 products.get('/getAll', authenticateToken, getAllProduct)

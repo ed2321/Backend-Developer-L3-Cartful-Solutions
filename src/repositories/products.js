@@ -30,6 +30,38 @@ const getDislikedProducts = async (userId) => {
     return productsModel.scan().where('dislikedBy').contains(userId).exec()
 }
 
+const getMostLikedProducts = async () => {
+    try {
+        const mostLikedProducts = await productsModel.scan().limit(10).exec()
+        const filteredProducts = mostLikedProducts.filter(
+            (product) => product.likedBy.length > 0
+        )
+        filteredProducts.sort((a, b) => b.likedBy.length - a.likedBy.length)
+        return filteredProducts
+    } catch (error) {
+        throw new Error(
+            `Error retrieving most liked products: ${error.message}`
+        )
+    }
+}
+
+const getMostDislikedProducts = async () => {
+    try {
+        const mostDislikedProducts = await productsModel.scan().limit(10).exec()
+        const filteredProducts = mostDislikedProducts.filter(
+            (product) => product.dislikedBy.length > 0
+        )
+        filteredProducts.sort(
+            (a, b) => b.dislikedBy.length - a.dislikedBy.length
+        )
+        return filteredProducts
+    } catch (error) {
+        throw new Error(
+            `Error retrieving most disliked products: ${error.message}`
+        )
+    }
+}
+
 const getRandomProduct = async () => {
     return productsModel
         .scan()
@@ -98,6 +130,8 @@ module.exports = {
     deleteProduct,
     getLikedProducts,
     getDislikedProducts,
+    getMostLikedProducts,
+    getMostDislikedProducts,
     getRandomProduct,
     filterProductsByPreferences,
     sortProductsBySimilarity,

@@ -182,6 +182,7 @@ const likeProduct = async (req, res) => {
             .json({ error: `Error liking the product: ${error.message}` })
     }
 }
+
 const dislikeProduct = async (req, res) => {
     const { sku } = req.params
     const { id } = req.user
@@ -281,6 +282,32 @@ const recommendProduct = async (req, res) => {
     }
 }
 
+const getMostLikedProducts = async (req, res) => {
+    try {
+        console.log('entreee')
+        const mostLikedProducts =
+            await productsRepository.getMostLikedProducts()
+        return res.status(200).json(mostLikedProducts)
+    } catch (error) {
+        return res.status(500).json({
+            error: `Error retrieving most liked products: ${error.message}`,
+        })
+    }
+}
+
+const getMostDislikedProducts = async (req, res) => {
+    try {
+        console.log('entreee')
+        const mostDislikedProducts =
+            await productsRepository.getMostDislikedProducts()
+        return res.status(200).json(mostDislikedProducts)
+    } catch (error) {
+        return res.status(500).json({
+            error: `Error retrieving most disliked products: ${error.message}`,
+        })
+    }
+}
+
 module.exports = {
     registerProduct,
     getProduct,
@@ -290,4 +317,6 @@ module.exports = {
     likeProduct,
     dislikeProduct,
     recommendProduct,
+    getMostLikedProducts,
+    getMostDislikedProducts,
 }
