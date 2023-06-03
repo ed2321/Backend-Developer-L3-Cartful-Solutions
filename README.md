@@ -1,3 +1,4 @@
+[![ci-api](https://github.com/ed2321/Backend-Developer-L3-Cartful-Solutions/actions/workflows/ci-api.yaml/badge.svg?branch=main)](https://github.com/ed2321/Backend-Developer-L3-Cartful-Solutions/actions/workflows/ci-api.yaml)
 # Backend-Developer-L3-Cartful-Solutions
 Prueba Práctica Backend Developer L3 Cartful-Solutions
 # Prerequisites
