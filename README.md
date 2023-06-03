@@ -17,6 +17,11 @@ Before to start the application, make sure to add the respective `.env` file ins
 
 run aplication 
 
+run the app with docker (recommended)
+```
+docker-compose up --build
+```
+
 ```
 npm run start
 ```
@@ -25,11 +30,6 @@ or if you want to run it in a development mode, try with this:
 
 ```
 npm run start:dev
-```
-
-run the app with docker
-```
-docker-compose up --build
 ```
 ## Endpoints
 POST api/users/login
