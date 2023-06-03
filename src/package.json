@@ -1,0 +1,65 @@
+{
+    "name": "src",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "start:dev": "nodemon index.js",
+        "test": "jest",
+        "test:ci": "jest --coverage --forceExit",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "prepare": "cd ../ && husky install src/.husky"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "0.27.2",
+        "bcryptjs": "2.4.3",
+        "cors": "2.8.5",
+        "dotenv": "16.0.2",
+        "dynamoose": "2.8.8",
+        "express": "4.18.1",
+        "express-session": "1.17.3",
+        "joi": "17.6.0",
+        "jsonwebtoken": "^9.0.0",
+        "uuid": "8.3.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.23.0",
+        "husky": "^8.0.0",
+        "jest": "28.1.2",
+        "lint-staged": "^13.0.3",
+        "nodemon": "^2.0.19",
+        "prettier": "2.7.1",
+        "supertest": "^6.2.4"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+            "<rootDir>/(lib|build|docs|node_modules)/"
+        ],
+        "verbose": true,
+        "setupFilesAfterEnv": [
+            "./setupTest.js"
+        ],
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/(node_modules|server/db/(migrations|seeds))/",
+            "<rootDir>/server/index.js",
+            "<rootDir>/knexfile.js"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "prettier --single-quote --write",
+            "eslint --fix"
+        ]
+    }
+}

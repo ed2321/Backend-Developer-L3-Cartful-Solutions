@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+    networks:
+      - network-api
+
+  s3-local:
+    image: localstack/localstack
+    container_name: s3-local
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "4566:4566"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - network-api
+
+  api:
+    depends_on:
+      - dynamodb-local
+      - s3-local
+    build: ./src
+    container_name: api
+    restart: always
+    volumes:
+      - ./src:/src
+      - /src/node_modules
+    networks:
+      - network-api
+    ports:
+      - 4000:4000
+
+networks:
+  network-api:
+    driver: bridge
