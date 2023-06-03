@@ -2,6 +2,8 @@ name: ci-api
 on:
   pull_request:
     branches: [master, main, demo, integration]
+  push: 
+    branches: [master, main, demo, integration]
 
 env:
   PROJECT_DIRECTORY: src
@@ -40,4 +42,4 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           path: '${{ env.PROJECT_DIRECTORY }}/coverage/lcov.info'
-          min_coverage: 75
+          min_coverage: 100

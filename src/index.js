@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-//  Connect all our routes to our application
+// Connect all our routes to our application
 app.use('/', routes)
 
 app.get('/', (_req, res) => {
